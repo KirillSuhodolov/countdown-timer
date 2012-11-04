@@ -14,8 +14,9 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    @event = Event.find(params[:id])
 
+    @event = Event.find(params[:id])
+    render_forbidden and return unless can_edit?
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @event }
@@ -34,7 +35,10 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
-    @event = Event.find(params[:id])
+
+      @event = Event.find(params[:id])
+      render_forbidden and return unless can_edit?
+    
   end
 
   # POST /events
@@ -42,7 +46,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(params[:event])
                          @event.user_id = current_user.id
-   # @event = current_user.events.build(params[:event])
+
 
     respond_to do |format|
       if @event.save
@@ -59,7 +63,7 @@ class EventsController < ApplicationController
   # PUT /events/1.json
   def update
     @event = Event.find(params[:id])
-
+    render_forbidden and return unless can_edit?
     respond_to do |format|
       if @event.update_attributes(params[:event])
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
@@ -76,10 +80,25 @@ class EventsController < ApplicationController
   def destroy
     @event = Event.find(params[:id])
     @event.destroy
-
+    render_forbidden and return unless can_edit?
     respond_to do |format|
       format.html { redirect_to events_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def can_edit?
+    current_user.id == @event.user_id
+  end
+
+  def render_forbidden
+    respond_to do |format|
+      format.html {redirect_to events_url, notice: 'It\'s not your page'}
+      #format.html { render :action => "errors/forbidden", :status => 403 }
+     
+    end
+    true
   end
 end

@@ -20,33 +20,35 @@
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
+
           <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
           </a>
+
           <a class="brand" href="#">Countdown Timer</a>     
+
           <div class="container nav-collapse">
             <ul class="nav">              
-                <% if user_signed_in? %>
+              <% if user_signed_in? %>
                 <li><%= link_to "Events List", events_path  %></li>
-                <li class="navbar-text">You are sign in <strong><%= current_user.email %></strong>. Not you? </li>
-        
+                <li class="navbar-text">You are sign in <strong><%= current_user.email %></strong></li>
               <% end %>  
 
-      <ul class="nav pull-right">
-        <% if user_signed_in? %>
-          <li class="dropdown">    
-            <%= link_to current_user.name, "Profile", :class => 'dropdown-toggle', 'data-toggle' => 'dropdown' %>
-            <ul class="dropdown-menu" role="menu">
-                <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
-                <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+            <ul class="nav pull-right">
+              <% if user_signed_in? %>
+                <li class="dropdown">    
+                  <%= link_to current_user.name, "Profile", :class => 'dropdown-toggle', 'data-toggle' => 'dropdown' %>
+                  <ul class="dropdown-menu" role="menu">
+                      <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
+                      <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+                  </ul>
+                </li>
+                <% else %>
+                  <li><%= link_to "Sign_in", new_user_session_path %></li>
+                <% end %>
             </ul>
-          </li>
-        <% else %>
-          <li><%= link_to "Sign_in", new_user_session_path %></li>
-        <% end %>
-      </ul>
               
             </ul>
           </div><!--/.nav-collapse -->
