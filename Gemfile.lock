@@ -5,6 +5,13 @@ GIT
     bootstrap-components-helpers (0.0.1)
 
 GIT
+  remote: http://github.com/rezwyi/jcountdown-rails.git
+  revision: 9cf894434f43fbbbc632dca558a497185888f7bc
+  specs:
+    jcountdown-rails (0.2.0)
+      jquery-rails
+
+GIT
   remote: https://github.com/mkdynamic/omniauth-facebook.git
   revision: b7150215fba0280285fc6d40bbba169302463d2c
   specs:
@@ -181,6 +188,7 @@ DEPENDENCIES
   bootstrap-components-helpers!
   coffee-rails (~> 3.2.1)
   devise
+  jcountdown-rails!
   jquery-rails
   omniauth
   omniauth-facebook!

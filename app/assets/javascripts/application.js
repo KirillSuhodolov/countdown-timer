@@ -12,5 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jcountdown
 //= require twitter/bootstrap
 //= require_tree .
+var date = $("#jcountdown").data('date');
+
+$("#jcountdown").setCountdown({
+ //Date for the countdown
+ targetDate: date, 
+ //Labels for days/hours/minutes/seconds,
+ //[ 'Days', 'Hours', 'Minutes', 'Seconds' ] by default
+ itemLabels: [ 'D', 'H', 'M', 'S' ] });

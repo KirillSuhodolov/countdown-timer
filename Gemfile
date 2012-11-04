@@ -33,6 +33,7 @@ gem 'will_paginate-bootstrap'
 gem 'simple_form'
 gem 'bootstrap-components-helpers',
         :git => 'git://gist.github.com/2117187.git'
+gem 'jcountdown-rails', :git => 'http://github.com/rezwyi/jcountdown-rails.git'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -2,7 +2,8 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+
+    @events = Event.where(:user_id => current_user.id).paginate(:page => params[:page], :per_page => 5)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,7 +26,6 @@ class EventsController < ApplicationController
   # GET /events/new.json
   def new
     @event = Event.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @event }
@@ -41,6 +41,8 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(params[:event])
+                         @event.user_id = current_user.id
+   # @event = current_user.events.build(params[:event])
 
     respond_to do |format|
       if @event.save
