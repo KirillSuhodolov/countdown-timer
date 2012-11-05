@@ -15,11 +15,11 @@
     <% @events.each do |event| %>
       <tr>
           <td><%= event.name %></td>
-          <td><%= event.date_end %></td>          
+          <td><%= event.datejs %></td>                    
           <td><%=l event.created_at %></td>
           <td>
             <%= link_to t('.success', :default => t("helpers.links.show")),
-                        event_path(event), :class => 'btn btn-mini btn-success' %>
+                        event_path(event), :class => 'btn btn-mini btn-success ' %>
             <%= link_to t('.edit', :default => t("helpers.links.edit")),
                         edit_event_path(event), :class => 'btn btn-mini btn-warning' %>
             <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
@@ -38,4 +38,3 @@
 <%= link_to t('.new', :default => t("helpers.links.add_event")),
             new_event_path,
             :class => 'btn btn-primary' %>
-

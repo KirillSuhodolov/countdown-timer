@@ -23,3 +23,22 @@ $("#jcountdown").setCountdown({
  //Labels for days/hours/minutes/seconds,
  //[ 'Days', 'Hours', 'Minutes', 'Seconds' ] by default
  itemLabels: [ 'D', 'H', 'M', 'S' ] });
+
+var datenow = Date.now
+$(function() {
+        $( "#datepicker" ).datepicker({
+           changeMonth: true,
+           changeYear: true
+        });
+        $( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+        $( "#datepicker" ).datepicker( "option", "showAnim", "blind" );
+  });
+
+$(function() {
+        $( "#event_datejs" ).datepicker({
+           changeMonth: true,
+           changeYear: true
+        });
+        $( "#event_datejs" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+        $( "#event_datejs" ).datepicker( "option", "showAnim", "blind" );
+  });
