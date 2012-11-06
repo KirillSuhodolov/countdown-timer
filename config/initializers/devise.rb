@@ -8,7 +8,10 @@ Devise.setup do |config|
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
-
+  require "omniauth-facebook"
+  config.omniauth :facebook, "259206484196760", "96378948d1d74c3e82556de0cce098e3"
+  require "omniauth-github"
+  config.omniauth :github, "aa3ddb1eb4973420fd1e", "d8fad2009ce6aab824188d689fc85f2a2eba6591", scope: "user"
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be

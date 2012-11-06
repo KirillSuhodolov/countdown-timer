@@ -1,5 +1,10 @@
 Timer::Application.routes.draw do
-  devise_for :users
+
+  get "omniauth_callbacks/facebook/"
+  get "omniauth_callbacks/github"
+  get "omniauth_callbacks/twitter"
+  
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   resources :events
   root :to => "events#index"
