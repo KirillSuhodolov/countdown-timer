@@ -1,0 +1,11 @@
+<% if @event.errors.any? -%>
+  $("#alert").hide(300);
+  $("#event_errors").html("<%= escape_javascript(@event.errors.full_messages.join '<br>').html_safe %>");
+  $("#event_errors").show(300);
+<% else -%>
+  $("#event_errors").hide(300);
+  $("#alert").html("<%= escape_javascript(flash[:notice]) %>");
+  $("#alert").show(300);
+  $(":input[type=text]").val('');
+  $("#events_list").html("<%= escape_javascript(render 'events') %>");
+<% end -%>
